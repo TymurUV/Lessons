@@ -1,4 +1,4 @@
-package listHw;
+package listWork;
 
 import java.util.ArrayList;
 import java.util.List;
