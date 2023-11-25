@@ -1,9 +1,9 @@
 package listHw;
 
 public class Product {
-    String name;
-    Double price;
-    int quantity;
+   private String name;
+   private Double price;
+    private int quantity;
 
     public Product(String name, Double price, int quantity) {
         this.name = name;

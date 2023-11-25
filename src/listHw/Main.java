@@ -7,11 +7,11 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         StoreInventory storeInventory = new StoreInventory();
-        storeInventory.displayInventory("Apples");
+        storeInventory.displayInventory();
         storeInventory.addProduct(new Product("Oranges", 2.33, 7));
-        storeInventory.displayInventory("Oranges");
+        storeInventory.displayInventory();
         storeInventory.removeInventory(0);
-        storeInventory.displayInventory("Banana");
+        storeInventory.displayInventory();
 
 
 
