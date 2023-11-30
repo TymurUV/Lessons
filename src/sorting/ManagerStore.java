@@ -8,14 +8,7 @@ public class ManagerStore implements Comparator<Product> {
     List<Product> list = new ArrayList<>();
     @Override
     public int compare(Product o1, Product o2) {
-       //return Double.compare(o1.getPrice(), o2.getPrice());
-        if (o1.getPrice() > o2.getPrice()){
-            return 1;
-        } else if (o1.getPrice() < o2.getPrice()) {
-            return -1;
-        }else {
-            return 0;
-        }
+       return Double.compare(o1.getPrice(), o2.getPrice());
     }
     public void sortingByPrice(){
         list.sort(new ManagerStore());
