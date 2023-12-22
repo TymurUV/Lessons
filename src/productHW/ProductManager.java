@@ -1,9 +1,36 @@
 package productHW;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class ProductManager {
+    Set<Product> set = new TreeSet<>(new ProductSortDefault());
 
+    public void sortByLength() {
+        Set<Product> set = new TreeSet<>(new ProductSortByLength());
+        set.addAll(set);
+        for (Product p : set) {
+            System.out.println(p);
+        }
+    }
+
+    public void sortByWidth() {
+        Set<Product> set = new TreeSet<>(new ProductSortByWidth());
+        set.addAll(set);
+        for (Product p : set) {
+            System.out.println(p);
+        }
+    }
+
+    public void sortByWeight() {
+        Set<Product> set = new TreeSet<>(new ProductSortByWeight());
+        set.addAll(set);
+        for (Product p : set) {
+            System.out.println(p);
+        }
+    }
 
     public void productAdd() {
         Scanner scanner = new Scanner(System.in);
@@ -37,6 +64,7 @@ public class ProductManager {
                 Product product = iterator.next();
                 if (product.getLength() == length && product.getWidth() == width && product.getWeight() == weight) {
                     iterator.remove();
+                    System.out.println("Your product has been removed");
                 }
             }
         }
@@ -50,5 +78,5 @@ public class ProductManager {
         }
         return false;
     }
-    Set<Product> set = new TreeSet<>();
+
 }

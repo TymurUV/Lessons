@@ -1,9 +1,6 @@
 package productHW;
 
-import java.util.Comparator;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,17 +24,24 @@ public class Main {
                     break;
                 }
                 case "3": {
-                    Set<ProductSort> productSorts = new TreeSet<>(new Comparator<ProductSort>() {
-                        @Override
-                        public int compare(ProductSort o1, ProductSort o2) {
-                            return 0;
-                        }
-                    });
+                    ProductManager productManager = new ProductManager();
+                    productManager.displayProduct();
+                    productManager.sortByLength();
+                    productManager.displayProduct();
                     break;
                 }
                 case "4": {
+                    ProductManager productManager = new ProductManager();
+                    productManager.displayProduct();
+                    productManager.sortByWidth();
+                    productManager.displayProduct();
+                    break;
                 }
                 case "5": {
+                    ProductManager productManager = new ProductManager();
+                    productManager.displayProduct();
+                    productManager.sortByWeight();
+                    productManager.displayProduct();
                 }
             }
         }

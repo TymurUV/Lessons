@@ -1,9 +1,8 @@
 package productHW;
 
 import java.util.Comparator;
-import java.util.TreeSet;
 
-public class ProductSort2 implements Comparator<Product> {
+public class ProductSortByWidth implements Comparator<Product> {
 
 
     @Override

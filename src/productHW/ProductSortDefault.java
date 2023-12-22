@@ -1,12 +1,8 @@
 package productHW;
 
-import java.util.*;
+import java.util.Comparator;
 
-public class ProductSort implements Comparator<Product> {
-
-
-
-
+public class ProductSortDefault implements Comparator<Product> {
     @Override
     public int compare(Product o1, Product o2) {
         return 0;
