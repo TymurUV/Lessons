@@ -4,44 +4,37 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        ProductManager productManager = new ProductManager();
         Scanner scanner = new Scanner(System.in);
         while (true) {
             menu();
             String choose = scanner.next();
             switch (choose) {
                 case "1": {
-                    ProductManager productManager = new ProductManager();
                     productManager.productAdd();
-                    productManager.displayProduct();
                     break;
 
                 }
                 case "2": {
-                    ProductManager productManager = new ProductManager();
-                    productManager.displayProduct();
                     productManager.removeProduct();
-                    productManager.displayProduct();
+
                     break;
                 }
                 case "3": {
-                    ProductManager productManager = new ProductManager();
-                    productManager.displayProduct();
                     productManager.sortByLength();
-                    productManager.displayProduct();
                     break;
                 }
                 case "4": {
-                    ProductManager productManager = new ProductManager();
-                    productManager.displayProduct();
                     productManager.sortByWidth();
-                    productManager.displayProduct();
                     break;
                 }
                 case "5": {
-                    ProductManager productManager = new ProductManager();
-                    productManager.displayProduct();
                     productManager.sortByWeight();
+                    break;
+                }
+                case "6": {
                     productManager.displayProduct();
+                    break;
                 }
             }
         }
@@ -55,6 +48,7 @@ public class Main {
         System.out.println("Press 3 to sort by length");
         System.out.println("Press 4 to sort by width");
         System.out.println("Press 5 to sort by weight");
+        System.out.println("Press 6 to display");
         System.out.println("-------------");
     }
 }

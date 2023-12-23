@@ -45,8 +45,8 @@ public class ProductManager {
     }
 
     public void displayProduct() {
-        for (Product p : set) {
-            System.out.println(p);
+        for (Product product : set) {
+            System.out.println(product);
         }
     }
 
