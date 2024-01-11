@@ -53,6 +53,70 @@ public class ZooClub {
         }
     }
 
+    public void removePetFromPerson() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Write down name of person to remove from");
+        String nameOfPerson = scanner.next();
+        System.out.println("Write down age of person");
+        int ageOfPerson = scanner.nextInt();
+        if (isPersonExist(personListMap, nameOfPerson)) {
+            System.out.println("Write down type of animal to remove");
+            String typeOfAnimal = scanner.next();
+            System.out.println("Write down name of animal");
+            String nameOfAnimal = scanner.next();
+            if (isAnimalExist(personListMap, nameOfPerson, ageOfPerson, typeOfAnimal, nameOfAnimal)) {
+                personListMap.entrySet().stream()
+                        .filter(e -> e.getKey().getName().equalsIgnoreCase(nameOfPerson) && e.getKey().getAge() == ageOfPerson)
+                        .findFirst()
+                        .ifPresent(e -> {
+                            List<Animal> animalList = e.getValue();
+                            animalList.removeIf(animal -> animal.getName().equalsIgnoreCase(nameOfAnimal) &&
+                                    animal.getType().equalsIgnoreCase(typeOfAnimal));
+                            System.out.println(nameOfAnimal.toUpperCase() + "Successfully deleted");
+                        });
+            }
+        }
+    }
+
+    public void removePerson() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Write down name of person to remove from");
+        String nameOfPerson = scanner.next();
+        System.out.println("Write down age of person");
+        int ageOfPerson = scanner.nextInt();
+        if (isPersonExist(personListMap, nameOfPerson)) {
+            personListMap.entrySet().stream()
+                    .filter(e -> e.getKey().getName().equalsIgnoreCase(nameOfPerson) && e.getKey().getAge() == ageOfPerson)
+                    .findFirst()
+                    .ifPresent(e -> {
+                        personListMap.remove(e.getKey());
+                        System.out.println(e.getKey() + "Successfully deleted");
+                    });
+        }
+    }
+
+    public void removeCertainAnimalFromAllPerson() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Write down type of animal to remove");
+        String typeOfAnimal = scanner.next();
+        personListMap.entrySet().forEach(e -> {
+            List<Animal> animalList = e.getValue();
+            animalList.removeIf(animal -> animal.getType().equalsIgnoreCase(typeOfAnimal));
+
+            animalList.forEach(animal -> System.out.println(animal.toString() + "successfully deleted"));
+        });
+    }
+
+    public void getZooClub() {
+//        for (Map.Entry<Person, List<Animal>> entry : personListMap.entrySet()) {
+//            System.out.println("Member " + entry.getKey().getName() + " has " + entry.getValue());
+//        }
+        personListMap.forEach((p, a) -> System.out.println("Member " + p.getName() + " has " + a));
+    }
+    public void getExit(){
+        System.exit(0);
+    }
+
     public boolean isPersonExist(Map<Person, List<Animal>> personListMap, String name) {
 //        for (Map.Entry<Person, List<Animal>> entry : personListMap.entrySet()) {
 //            if (entry.getKey().getName().equalsIgnoreCase(name)){
@@ -61,6 +125,15 @@ public class ZooClub {
 //        }
 //        return false;
         return personListMap.entrySet().stream().anyMatch(e -> e.getKey().getName().equalsIgnoreCase(name));
+    }
+
+    public boolean isAnimalExist(Map<Person, List<Animal>> animalListMap, String nameOfPerson, int ageOfPerson, String type, String nameOfAnimal) {
+        return animalListMap.entrySet()
+                .stream()
+                .filter(e -> e.getKey().getName().equalsIgnoreCase(nameOfPerson) && e.getKey().getAge() == ageOfPerson)
+                .flatMap(e -> e.getValue().stream())
+                .anyMatch(e -> e.getType().equalsIgnoreCase(type) && e.getName().equalsIgnoreCase(nameOfAnimal));
+
     }
 
 }
